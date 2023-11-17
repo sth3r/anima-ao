@@ -1,0 +1,38 @@
+<div class="loader">
+    <div id="treco"></div>
+</div>
+
+<style>
+    .loader {
+        display: flex;
+        /*flex-direction: row;*/
+        align-items: center;
+        width: 700px;
+        height: 50px;
+        border: 2px solid rgb(161, 87, 217);
+    }
+    .loader div {
+        width: 3px;
+        height: 44px;    
+        animation: loading 2s linear forwards;
+    }
+    
+    #treco {
+        background-color: rgb(134, 239, 98);
+        margin-left: 3px;
+        animation-play-state: paused;
+        animation-timing-function: linear;
+    }
+    
+    .loader:hover #treco{
+        animation-play-state: running;
+    }
+    
+    @keyframes loading {
+        to {
+            width: 694px;
+        }
+    }
+
+    
+</style>
