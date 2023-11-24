@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>circulo</title>
+    <style>
+		body {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.examples-containers {
+			margin-top: 1%;
+			width: 70%;
+			display: flex;
+			justify-content: center;
+		}
+
+		canvas {border: 3px solid black;}
+
+		div {
+			flex-direction: column;
+			justify-items: center;
+		}
+
+		p {text-align: center;}
+
+		a {outline: 0px;}
+	</style>
+</head>
+<body>
+    <canvas width="600" height="400">
+        seu navegador nao suporta o canvas
+    </canvas>
+</body>
+</html>
+<script>
+		const canvas = document.querySelector('canvas')
+		
+		const ctx = canvas.getContext('2d');
+
+		function circ(ctx, x, y, r, l, color, fill=false){
+			ctx.lineWidth = l;
+			ctx.beginPath();
+			ctx.arc(x,y,r,
+				0,Math.PI/180*360)
+			ctx.strokeStyle = color;
+			ctx.stroke();
+			if(fill){
+				ctx.fillStyle = fill;
+				ctx.fill();
+			}
+		}
+	circ(ctx, 100, 50, 30, 5, '#f00');
+	circ(ctx, 200, 50, 40, 10, '#00f', '#0f0');
+
+	
+</script>
