@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>circulo</title>
+    <title>triangulo</title>
     <style>
 		body {
 			display: flex;
@@ -36,21 +36,25 @@
 </body>
 </html>
 <script>
-	const canvas = document.querySelector('canvas')	
-	const ctx = canvas.getContext('2d');
+		const canvas = document.querySelector('canvas')
+		const ctx = canvas.getContext('2d');
 
-	function circ(ctx, x, y, r, l, color, fill=false){
-		ctx.lineWidth = l;
-		ctx.beginPath();
-		ctx.arc(x,y,r,
-			0,Math.PI/180*360)
-		ctx.strokeStyle = color;
-		ctx.stroke();
-		if(fill){
-			ctx.fillStyle = fill;
+		function triEqui(ctx, x, y, l, color='#000', rev=false){
+			ctx.beginPath();
+			ctx.moveTo(x, y);
+			ctx.lineTo(x-l/2, y-l);
+			ctx.lineTo(x+l/2, y-l);
+			ctx.lineTo(x, y);
+			
+			// ctx.moveTo(x, y);
+			ctx.lineTo(x-l/2, y+l);
+			ctx.lineTo(x+l/2, y+l);
+			ctx.lineTo(x, y);
+			
+			ctx.fillStyle = color;
 			ctx.fill();
 		}
-	}
-	circ(ctx, 100, 50, 30, 5, '#f00');
-	circ(ctx, 200, 50, 40, 10, '#00f', '#0f0');
+		
+	triEqui(ctx, 100, 100, 80, "#0f0");
+	
 </script>

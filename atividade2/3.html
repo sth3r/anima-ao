@@ -37,41 +37,31 @@
 </html>
 <script>
 		const canvas = document.querySelector('canvas')
-		
 		const ctx = canvas.getContext('2d');
-		
-		// var lado = 80;
-
-		// ctx.beginPath();
-		// ctx.moveTo(100, 100); //Ponto inicial
-		// ctx.lineTo(100+lado, 100);
-		// ctx.lineTo(100+lado, 100-lado);
-		// ctx.lineTo(100, 100);
-		// ctx.stroke(); //draw path
-
 
 		function triEqui(ctx, x, y, l, color='#000', rev=false){
 			//alert('entro');
 			ctx.beginPath();
-			ctx.strokeStyle = color;
-			ctx.moveTo(x, y); //Ponto inicial
-			ctx.lineTo(x+l, y);
-			ctx.lineTo(x+l, y-l);
-			ctx.lineTo(x, y);
-			ctx.translate(150, 75);
-			ctx.rotate(Math.PI / 4);
-			ctx.translate(-150, -75);
-			// if(rev){
-			// 	ctx.translate(150, 75);
-			// 	ctx.rotate(Math.PI / 2);
-			// 	ctx.translate(-150, -75);
-			// 	ctx.fill();
-			// }
+			if(rev){
+				// alert('entru');
+				ctx.moveTo(x, y); //Ponto inicial
+				ctx.lineTo(x-l/2, y-l);
+				ctx.lineTo(x+l/2, y-l);
+				ctx.lineTo(x, y);
+			}
+			else{
+				// alert('entraste');
+				ctx.moveTo(x, y); //Ponto inicial
+				ctx.lineTo(x-l/2, y+l);
+				ctx.lineTo(x+l/2, y+l);
+				ctx.lineTo(x, y);
+			}
 			ctx.fillStyle = color;
 			ctx.fill();
 		}
+		
 	triEqui(ctx, 100, 100, 80, "#000");
-	triEqui(ctx, 200, 100, 80, "#0f0", true);
+	triEqui(ctx, 200, 180, 80, "#0f0", true);
 
 
 	// function triEqui(ctx, x, y, l, color='#000', rev=false){

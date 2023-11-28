@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>circulo</title>
+    <title>escudo</title>
     <style>
 		body {
 			display: flex;
@@ -36,21 +36,24 @@
 </body>
 </html>
 <script>
-	const canvas = document.querySelector('canvas')	
+	const canvas = document.querySelector('canvas')
+		
 	const ctx = canvas.getContext('2d');
 
-	function circ(ctx, x, y, r, l, color, fill=false){
-		ctx.lineWidth = l;
+	function circ(ctx, x, y, r, fill){
 		ctx.beginPath();
 		ctx.arc(x,y,r,
 			0,Math.PI/180*360)
-		ctx.strokeStyle = color;
-		ctx.stroke();
-		if(fill){
-			ctx.fillStyle = fill;
-			ctx.fill();
-		}
+		ctx.fillStyle = fill;	
+        ctx.fill();
 	}
-	circ(ctx, 100, 50, 30, 5, '#f00');
-	circ(ctx, 200, 50, 40, 10, '#00f', '#0f0');
+
+    meioX=280;
+    meioY=175;
+
+	circ(ctx, meioX, meioY, 80, 'red');
+	circ(ctx, meioX, meioY, 63, 'white');
+	circ(ctx, meioX, meioY, 46, 'red');
+	circ(ctx, meioX, meioY, 31, 'blue');
+	
 </script>

@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>circulo</title>
+    <title>CENTRALIZADO</title>
     <style>
 		body {
 			display: flex;
@@ -36,21 +36,17 @@
 </body>
 </html>
 <script>
-	const canvas = document.querySelector('canvas')	
+	const canvas = document.querySelector('canvas')
 	const ctx = canvas.getContext('2d');
 
-	function circ(ctx, x, y, r, l, color, fill=false){
-		ctx.lineWidth = l;
-		ctx.beginPath();
-		ctx.arc(x,y,r,
-			0,Math.PI/180*360)
-		ctx.strokeStyle = color;
-		ctx.stroke();
-		if(fill){
-			ctx.fillStyle = fill;
-			ctx.fill();
-		}
-	}
-	circ(ctx, 100, 50, 30, 5, '#f00');
-	circ(ctx, 200, 50, 40, 10, '#00f', '#0f0');
+    function writeCenterXY(ctx, cwidth, cheight, text, color='black', size='12', 
+                            family='serif', style='normal', base='alphabetic'){      
+		ctx.font = `${style} ${size}px ${family}`;
+        ctx.textBaseline = base;
+		ctx.fillStyle= color;
+		ctx.fillText(text, 
+                    cwidth / 2 - ctx.measureText(text).width / 2, 
+                    cheight / 2 - size);
+    }
+    writeCenterXY(ctx, canvas.width, canvas.height, "pão", '#902830', 47, 'PLAYFAIR DISPLAY', 'bold', 'top')
 </script>

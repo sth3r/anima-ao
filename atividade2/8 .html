@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tricolor</title>
+    <style>
+		body {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.examples-containers {
+			margin-top: 1%;
+			width: 70%;
+			display: flex;
+			justify-content: center;
+		}
+
+		canvas {border: 3px solid black;}
+
+		div {
+			flex-direction: column;
+			justify-items: center;
+		}
+
+		p {text-align: center;}
+
+		a {outline: 0px;}
+	</style>
+</head>
+<body>
+    <canvas width="600" height="400">
+        seu navegador nao suporta o canvas
+    </canvas>
+</body>
+</html>
+<script>
+	const canvas = document.querySelector('canvas')
+	const ctx = canvas.getContext('2d');
+    
+    function gradiente(ctx, c1, c2, c3, c4 ){
+        let fundo = ctx.createLinearGradient(0, canvas.height/2, canvas.width, canvas.height/2)
+        console.log(c1);
+        fundo.addColorStop(0.1, c1)
+		fundo.addColorStop(.3, c2)
+		fundo.addColorStop(.7, c3)
+		fundo.addColorStop(.9, c4)
+        ctx.fillStyle = fundo;
+		ctx.fillRect(0, 0, canvas.width, canvas.height)
+    }
+    
+    function writeCenterXY(ctx, cwidth, cheight, text, size='12', 
+                            family='serif', style='normal', base='alphabetic', 
+                           color){
+        ctx.font = `${style} ${size}px ${family}`;
+        ctx.textBaseline = base;
+        this.textMed = ctx.measureText(text)
+        
+        console.log(text);
+        console.log(this.textMed);
+        // debugger;
+
+        this.gradienteText = function (ctx,{c1, c2, c3, c4}){
+            console.log(c4);
+            let fundo = ctx.createLinearGradient(
+                cwidth / 2 - this.textMed.width / 2,
+                 cheight/2,
+                 cwidth / 2 - this.textMed.width / 2 + this.textMed.width,
+                  cheight/2)
+            fundo.addColorStop(0.1, c4)
+            fundo.addColorStop(.3, c3)
+            fundo.addColorStop(.7, c2)
+            fundo.addColorStop(.9, c1)            
+            ctx.fillStyle = fundo;
+            ctx.fillText(text,
+                cwidth / 2 - this.textMed.width / 2,
+                cheight / 2 - size)
+        }
+        this.gradienteText(ctx, color)
+    }
+
+    gradiente(ctx, '#282678',"#780271","#224","#289")
+    writeCenterXY(ctx, canvas.width, canvas.height, "ausdhsiaud", 47, 'PLAYFAIR DISPLAY', 'bold', 'top', 
+    {c1:"#282678",c2:"#780271",c3:"#224",c4:"#289"})
+</script>
